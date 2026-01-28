@@ -1,0 +1,69 @@
+{
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "Conan: Install Debug",
+            "command": "conan",
+            "args": [
+                "install",
+                ".",
+                "--build=missing",
+                "--settings=build_type=Debug"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [],
+            "detail": "Conan Dependencies für Debug installieren"
+        },
+        {
+            "type": "shell",
+            "label": "Conan: Install Release",
+            "command": "conan",
+            "args": [
+                "install",
+                ".",
+                "--build=missing",
+                "--settings=build_type=Release"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [],
+            "detail": "Conan Dependencies für Release installieren"
+        },
+        {
+            "type": "shell",
+            "label": "Conan: Build Debug",
+            "command": "conan",
+            "args": [
+                "build",
+                ".",
+                "--settings=build_type=Debug"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "dependsOn": [
+                "Conan: Install Debug"
+            ],
+        },
+        {
+            "type": "shell",
+            "label": "Conan: Build Release",
+            "command": "conan",
+            "args": [
+                "build",
+                ".",
+                "--settings=build_type=Release"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "dependsOn": [
+                "Conan: Install Release"
+            ],
+        },
+    ],
+    "version": "2.0.0"
+}
