@@ -1,4 +1,4 @@
-#include <limits>
+#pragma once
 #include <map>
 #include <optional>
 
